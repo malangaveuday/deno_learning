@@ -106,14 +106,16 @@ const updateProduct = async ({
       product,
     };
   } else {
-    const indexOfProduct = products.findIndex(
-      (product) => product.productId === params.id
+    const updatedProductData = requestBody.value.product;
+    const updatedProducts = products.map((product) =>
+      product.productId === params.id
+        ? { ...product, ...updatedProductData }
+        : product
     );
-    products[indexOfProduct] = requestBody.value.product;
     response.status = 200;
     response.body = {
       success: 200,
-      products,
+      products: updatedProducts,
     };
   }
 };
