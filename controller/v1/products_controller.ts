@@ -1,4 +1,5 @@
 import { Product } from "../../interface.ts";
+import { v4 } from "https://deno.land/std/uuid/mod.ts";
 
 const products: Product[] = [
   {
@@ -120,4 +121,30 @@ const updateProduct = async ({
   }
 };
 
-export { getAllProducts, getProductById, updateProduct };
+const addProductToList = async ({
+  request,
+  response,
+}: {
+  request: any;
+  response: any;
+}) => {
+  if (request.hasBody) {
+    const responseBody = await request.body();
+    console.log("product", responseBody);
+    const product = responseBody.value.product;
+    product.id = v4.generate();
+    products.push(product);
+    response.status = 200;
+    response.body = {
+      success: true,
+      product,
+    };
+  } else {
+    response.status = 302;
+    response.body = {
+      message: "Please provide data...",
+    };
+  }
+};
+
+export { getAllProducts, getProductById, updateProduct, addProductToList };
