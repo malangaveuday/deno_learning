@@ -1,58 +1,7 @@
 import { Client } from "https://deno.land/x/postgres/mod.ts";
-import { Product } from "../../interface.ts";
-import { v4 } from "https://deno.land/std/uuid/mod.ts";
 import { dbCred } from "../../config.ts";
 
 const client = new Client(dbCred);
-// await client.connect();
-
-const products: Product[] = [
-  {
-    productSize: "",
-    item: "DELUXE COOKED HAM",
-    plu_upc: "",
-    price: "$5.15",
-    productId: "102",
-    catId: "1",
-    uom: "LB",
-  },
-  {
-    productSize: "",
-    item: "DELUXE LOW-SODIUM COOKED HAM ",
-    plu_upc: "",
-    price: "$5.15",
-    productId: "159",
-    catId: "1",
-    uom: "LB",
-  },
-  {
-    productSize: "",
-    item: "DELUXE LOW-SODIUM WHOLE HAM",
-    plu_upc: "",
-    price: "$5.15",
-    productId: "105",
-    catId: "1",
-    uom: "LB",
-  },
-  {
-    productSize: "",
-    item: "SMOKED VIRGINA HAM",
-    plu_upc: "",
-    price: "$5.15",
-    productId: "156",
-    catId: "1",
-    uom: "LB",
-  },
-  {
-    productSize: "",
-    item: "HONEY MAPLE HAM",
-    plu_upc: "",
-    price: "$5.15",
-    productId: "150",
-    catId: "1",
-    uom: "LB",
-  },
-];
 
 // get all products
 // api GET /api/v1/products
